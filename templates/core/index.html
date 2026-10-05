@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}هتل آریسا | خانه{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/core/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero" style="background-image: linear-gradient(90deg, rgba(2,7,12,0.88) 0%, rgba(2,7,12,0.55) 35%, rgba(2,7,12,0.1) 65%, rgba(2,7,12,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.7) 100%), url('{% static 'images/index/hero.jpg' %}');">
+    <div class="hero-content">
+        <div class="hero-brand">ARISA</div>
+        <div class="hero-divider"><span></span><b>❖</b><span></span></div>
+        <h1 class="hero-subtitle">تجربه‌ای فراتر از اقامت</h1>
+        <p class="hero-description">اقامتی به‌یادماندنی در قلب آرامش و شکوه</p>
+        <a href="{% url 'rooms:list' %}" class="hero-cta"><span>→</span> رزرو تجربه‌ای خاص</a>
+    </div>
+
+
+</section>
+
+<!-- درباره‌ی هتل آریسا -->
+<section class="about-section" id="about">
+    <div class="about-image">
+        <img src="{% static 'images/index/about.jpg' %}" alt="درباره آریسا">
+    </div>
+    <div class="about-text">
+        <p class="section-eyebrow">درباره ما</p>
+        <h2>هتلی برای لحظاتی ماندگار</h2>
+        <p>آریسا، تجربه‌ای فراتر از یک اقامت لوکس است.
+ما با ترکیب معماری مدرن، خدمات حرفه‌ای و توجه به جزئیات، محیطی متفاوت برای مهمانان خود فراهم کرده‌ایم.
+هدف ما خلق اقامتی آرام، شخصی‌سازی‌شده و به‌یادماندنی است.
+از لحظه ورود تا پایان اقامت، کیفیت و رضایت مهمانان در اولویت ماست.
+آریسا؛ جایی برای تجربه‌ای که فراتر از انتظار شماست. ✨</p>
+    </div>
+</section>
+
+<!-- باکس امکانات و ویژگی‌ها -->
+<section class="amenities-section" id="services">
+    <p class="section-eyebrow">چرا آریسا</p>
+    <h2 class="section-title">امکانات و ویژگی‌های هتل</h2>
+   <div class="amenities-grid">
+    <div class="amenity-box">
+        <span class="amenity-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 6h8m-4 0v14m0 0c-6 0-9-4-9-10h18c0 6-3 10-9 10Zm0 0v10m-6 6h12m-6-6v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M34 8c-3 0-5 2-5 5 0 2 1 3 2 4l1 1v10m2-15c3 0 5 2 5 5 0 2-1 3-2 4l-1 1v10m-6 4h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
+        <h4>خدمات برگزاری مراسم</h4>
+        <p>فضایی مجهز برای برگزاری جشن، مراسم خصوصی، جلسات و رویدادهای ویژه.
+تیم هتل از برنامه‌ریزی تا اجرای مراسم در کنار شما خواهد بود.</p>
+    </div>
+
+    <div class="amenity-box">
+        <span class="amenity-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 30v-5l4-9c1-2 2-3 5-3h18c3 0 4 1 5 3l4 9v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 30h36v4a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-2H13v2a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <circle cx="14" cy="24" r="2" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="34" cy="24" r="2" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M12 17h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+        </span>
+        <h4>ترانسفر اختصاصی</h4>
+        <p>جابه‌جایی مهمانان از فرودگاه، راه‌آهن یا هر مقصد دلخواه با خودروهای لوکس.
+امکان رزرو خودرو و راننده اختصاصی پیش از ورود به هتل.</p>
+    </div>
+
+    <div class="amenity-box">
+        <span class="amenity-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 28a18 18 0 0 1 36 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M4 28h40" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="24" cy="28" r="2.2" fill="currentColor"/>
+                <path d="M24 28 31 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M10 34h28l-2 6H12l-2-6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+        </span>
+        <h4>خدمات اتاق ۲۴ ساعته</h4>
+        <p>مکان سفارش غذا، نوشیدنی و سایر نیازهای مهمان در هر ساعت از شبانه‌روز.
+همه‌چیز بدون نیاز به ترک اتاق و با سرویس‌دهی سریع انجام می‌شود.</p>
+    </div>
+
+    <div class="amenity-box">
+        <span class="amenity-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 6l2.6 7.2L34 16l-7.4 2.8L24 26l-2.6-7.2L14 16l7.4-2.8L24 6Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M12 28l1.3 3.6L17 33l-3.7 1.4L12 38l-1.3-3.6L7 33l3.7-1.4L12 28Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M36 26l1 2.8L40 30l-3 1.2L36 34l-1-2.8L32 30l3-1.2L36 26Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+        </span>
+        <h4>کانسیرج اختصاصی</h4>
+        <p>هماهنگی رستوران، بلیت، برنامه‌های تفریحی و درخواست‌های ویژه مهمانان.
+یک همراه اختصاصی برای ساختن تجربه‌ای شخصی‌سازی‌شده در طول اقامت.</p>
+    </div>
+</div>
+</section>
+
+<section class="gallery-section" id="gallery">
+    <p class="section-eyebrow">گالری تصاویر</p>
+    <h2 class="section-title">لحظاتی از آریسا</h2>
+    <div class="gallery-track-wrap">
+        <div class="gallery-track" id="galleryTrack">
+            {% for img in gallery_images %}
+                <div class="gallery-item">
+    <img src="{{ img.image.url }}" alt="{{ img.place_name }}">
+    <span class="gallery-caption">{{ img.place_name }}</span>
+</div>
+            {% endfor %}
+        </div>
+        <button class="gallery-arrow prev" onclick="document.getElementById('galleryTrack').scrollBy({left:300,behavior:'smooth'})">›</button>
+        <button class="gallery-arrow next" onclick="document.getElementById('galleryTrack').scrollBy({left:-300,behavior:'smooth'})">‹</button>
+    </div>
+</section>
+
+
+
+<!-- ==========================
+     QUICK LINKS
+     ========================== -->
+
+<section class="quick-links-section">
+
+    <!-- اتاق‌ها -->
+    <a href="{% url 'rooms:list' %}" class="quick-link">
+        <span class="quick-link-icon">
+            <img
+                src="{% static 'images/index/quick-links/rooms.png' %}"
+                alt="اتاق‌ها و سوئیت‌ها"
+            >
+        </span>
+        <span>اتاق‌ها</span>
+    </a>
+
+
+    <!-- رستوران -->
+    <a href="{% url 'pages:restaurant' %}" class="quick-link">
+        <span class="quick-link-icon">
+            <img
+                src="{% static 'images/index/quick-links/restaurant.png' %}"
+                alt="رستوران"
+            >
+        </span>
+        <span>رستوران</span>
+    </a>
+
+
+    <!-- کافه -->
+    <a href="{% url 'pages:cafe' %}" class="quick-link">
+        <span class="quick-link-icon">
+            <img
+                src="{% static 'images/index/quick-links/cafe.png' %}"
+                alt="کافه"
+            >
+        </span>
+        <span>کافه</span>
+    </a>
+
+
+    <!-- استخر -->
+    <a href="{% url 'pages:pool' %}" class="quick-link">
+        <span class="quick-link-icon">
+            <img
+                src="{% static 'images/index/quick-links/pool.png' %}"
+                alt="استخر"
+            >
+        </span>
+        <span>استخر</span>
+    </a>
+
+
+    <!-- ماساژ -->
+    <a href="{% url 'pages:massage' %}" class="quick-link">
+        <span class="quick-link-icon">
+            <img
+                src="{% static 'images/index/quick-links/massage.png' %}"
+                alt="ماساژ"
+            >
+        </span>
+        <span>ماساژ</span>
+    </a>
+
+</section>
+
+
+<section class="timeline-section">
+
+    <h2 class="section-title">مسیر پیشرفت ما</h2>
+
+    <div class="timeline-track">
+
+        <div class="timeline-step">
+            <span class="timeline-year">۱۴۰۱</span>
+            <h4>افتتاح هتل آریسا</h4>
+            <p>شروع مسیری جدید در صنعت هتلداری لوکس</p>
+        </div>
+
+
+        <div class="timeline-step">
+            <span class="timeline-year">۱۴۰۲</span>
+            <h4>دریافت گواهینامه‌های بین‌المللی</h4>
+            <p>تأیید کیفیت خدمات و مدیریت</p>
+        </div>
+
+
+        <div class="timeline-step">
+            <span class="timeline-year">۱۴۰۳</span>
+            <h4>افزایش رضایت مهمانان</h4>
+            <p>کسب امتیاز عالی از مهمانان عزیز</p>
+        </div>
+
+
+        <div class="timeline-step">
+            <span class="timeline-year">۱۴۰۴ و آینده</span>
+            <h4>توسعه، نوآوری و گسترش</h4>
+            <p>پروژه‌های جدید برای تجربه‌ای بهتر</p>
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- معرفی اتاق‌ها -->
+<section class="rooms-showcase-section" id="rooms">
+    <p class="section-eyebrow">اقامت</p>
+    <h2 class="section-title">اتاق‌ها و سوییت‌های آریسا</h2>
+    <div class="rooms-showcase-grid">
+        {% for category in categories %}
+            {% with room=category.room_types.first %}
+                {% if room %}
+                    <div class="room-showcase-card">
+                        {% with image=room.images.first %}
+                            {% if image %}
+                                <img src="{{ image.image.url }}" alt="{{ room.name }}">
+                            {% else %}
+                                <div class="room-showcase-placeholder"></div>
+                            {% endif %}
+                        {% endwith %}
+                        <div class="room-showcase-info">
+                            <h4>{{ room.name }}</h4>
+                            <p>{{ category.name_fa }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+    <div class="section-cta-wrap">
+        <a href="{% url 'rooms:list' %}" class="section-cta">مشاهده همه اتاق‌ها</a>
+    </div>
+</section>
+
+<!-- معرفی گروه هتلینگ آریسا -->
+<section class="holding-section">
+    <div class="holding-text">
+        <p class="section-eyebrow">گروه هتلینگ آریسا</p>
+        <h1>داستان ما</h1>
+        <p>آریسا از یک ایده ساده آغاز شد؛ خلق هتلی که اقامت را به یک تجربه متمایز تبدیل کند.
+با الهام از معماری مدرن و زیبایی‌شناسی مینیمال، هر بخش از هتل با دقت طراحی شد.
+از همان ابتدا، توجه به جزئیات و خلق حس آرامش برای مهمانان، بخشی از هویت ما بود.
+امروز آریسا جایی است که لوکس بودن را در کیفیت، آرامش و تجربه‌ای شخصی معنا می‌کند.
+داستان آریسا همچنان ادامه دارد؛ با هر مهمانی که قدم به دنیای ما می‌گذارد. ✨</p>
+        <h2>پشتوانه‌ای معتبر برای تجربه‌ای مطمئن</h2>
+        <p>گروه هتلینگ آریسا با تکیه بر استانداردهای روز صنعت هتلداری و تیمی متخصص، تلاش می‌کند تجربه‌ای متفاوت و ماندگار برای مهمانان خلق کند.
+ما باور داریم کیفیت واقعی در توجه به جزئیات شکل می‌گیرد؛ از طراحی فضا و امکانات گرفته تا نحوه ارائه خدمات.
+در آریسا، هر مجموعه بخشی از یک نگاه مشترک است؛ نگاهی که بر کیفیت، اعتماد و رضایت مهمانان بنا شده است.
+هدف ما ساختن محیطی است که در آن، آرامش، اصالت و خدمات حرفه‌ای در کنار یکدیگر معنا پیدا کنند.
+آریسا؛ نامی برای اقامتی مطمئن، تجربه‌ای متمایز و استانداردی ماندگار. </p>
+    </div>
+    <div class="holding-image">
+        <img src="{% static 'images/index/holding.jpg' %}" alt="گروه هتلینگ آریسا">
+    </div>
+</section>
+
+<!-- میانبر اخبار -->
+{% if latest_news %}
+<section class="news-preview-section">
+
+    <div class="news-preview-header">
+
+        <a href="{% url 'pages:news_list' %}" class="section-cta small">
+            مشاهده همه اخبار
+        </a>
+
+        <h2 class="section-title">
+            اخبار و تازه‌ها
+        </h2>
+
+    </div>
+
+
+    <div class="news-preview-grid">
+
+        {% for item in latest_news %}
+
+        <div class="news-card">
+
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            {% endif %}
+
+
+            <div class="news-card-body">
+
+                <span class="news-date">
+                    {{ item.created_at|date:"Y/m/d" }}
+                </span>
+
+
+                <h4>
+                    {{ item.title }}
+                </h4>
+
+
+                <a href="{% url 'pages:news_list' %}" class="news-readmore">
+                    بیشتر بخوانید ←
+                </a>
+
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+{% endif %}
+   <section class="stats-section">
+
+
+    <div class="stat-item">
+
+        <span class="stat-number">
+            ۲۵۰+
+        </span>
+
+        <p>
+            نیروی متخصص
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-item">
+
+        <span class="stat-number">
+            ۹.۷/۱۰
+        </span>
+
+        <p>
+            رضایت مهمانان
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-item">
+
+        <span class="stat-number">
+            ۱۵۰+
+        </span>
+
+        <p>
+            اتاق و سوئیت لوکس
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-item">
+
+        <span class="stat-number">
+            ۱۲+
+        </span>
+
+        <p>
+            جوایز و افتخارات
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-item">
+
+        <span class="stat-number">
+            ۴
+        </span>
+
+        <p>
+            سال تجربه درخشان
+        </p>
+
+    </div>
+
+
+</section>
+{% endblock %}

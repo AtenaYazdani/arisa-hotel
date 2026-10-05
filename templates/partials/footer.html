@@ -1,0 +1,69 @@
+{% load static %}
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <a href="{% url 'core:index' %}" class="footer-logo">
+                <img src="{% static 'images/logo/arisa-logo.png' %}" alt="هتل آریسا">
+            </a>
+            <p>هتل آریسا، تجربه‌ای از آرامش، کیفیت و میزبانی شایسته.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">◎</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="Pinterest">p</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h4>دسترسی سریع</h4>
+            <a href="{% url 'core:index' %}">صفحه اصلی</a>
+            <a href="{% url 'core:index' %}#about">درباره ما</a>
+            <a href="{% url 'rooms:list' %}">اتاق‌ها</a>
+            <a href="{% url 'pages:restaurant' %}">رستوران</a>
+            <a href="{% url 'core:index' %}#gallery">گالری</a>
+            <a href="{% url 'core:index' %}#footer-contact">تماس با ما</a>
+        </div>
+
+        <div class="footer-section">
+            <h4>اطلاعات</h4>
+            <a href="#">قوانین هتل</a>
+            <a href="{% url 'pages:news_list' %}">رویدادها</a>
+            <a href="#">کارت هدیه</a>
+            <a href="#">سؤالات متداول</a>
+            <a href="#">فرصت‌های شغلی</a>
+            <a href="{% url 'pages:news_list' %}">اخبار</a>
+        </div>
+
+        <div class="footer-section footer-contact" id="footer-contact">
+            <h4>تماس با ما</h4>
+            <div class="contact-item"><span class="contact-icon">⌖</span><span>ایران، آدرس هتل آریسا</span></div>
+            <div class="contact-item"><span class="contact-icon">☎</span><span dir="ltr">+98 21 1234 5678</span></div>
+            <div class="contact-item"><span class="contact-icon">✉</span><span dir="ltr">info@arisa.com</span></div>
+            <div class="contact-item"><span class="contact-icon">◷</span><span>شنبه تا پنجشنبه، ۲۴ ساعته</span></div>
+        </div>
+
+        <div class="footer-newsletter">
+            <h4>خبرنامه</h4>
+            <p>برای دریافت آخرین اخبار، پیشنهادها و تخفیف‌های ویژه در خبرنامه ما عضو شوید.</p>
+           <form class="newsletter-form" method="post" action="{% url 'newsletter_subscribe' %}">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="آدرس ایمیل شما" required>
+    <button type="submit">➤</button>
+</form>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <span>© 2025 هتل آریسا. تمامی حقوق محفوظ است.</span>
+        <div>
+            <a href="#">حریم خصوصی</a>
+            <span class="separator">|</span>
+            <a href="#">قوانین و مقررات</a>
+        </div>
+    </div>
+
+</footer>

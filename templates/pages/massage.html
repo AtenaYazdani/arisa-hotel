@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}خدمات ماساژ | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow="تجربه‌ای از آرامش مطلق" title="ماساژ، آرامش، تعادل درونی" description="با درمان‌های تخصصی در فضایی آرام و لوکس، ذهن و بدن خود را به آرامش عمیقی دعوت کنید." hero_image="images/pages/massage-hero.jpg" cta_text="مشاهده خدمات ماساژ" cta_link="#massage-list" %}
+
+<section class="facility-grid-section" id="massage-list">
+    <div class="facility-grid">
+        {% for service in services %}
+            <div class="facility-card">
+                <img src="{{ service.image.url }}" alt="{{ service.name }}">
+                <h3>{{ service.name }}</h3>
+                <p>{{ service.description }}</p>
+                {% if service.duration_minutes or service.price %}
+                    <div class="massage-meta">
+                        {% if service.duration_minutes %}<span>{{ service.duration_minutes }} دقیقه</span>{% endif %}
+                        {% if service.price %}<span>{{ service.price|floatformat:0 }} تومان</span>{% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>در حال حاضر موردی برای نمایش وجود ندارد.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="promo-banner">
+    <div class="promo-banner-content">
+        <h2>آرامش بیشتر، ارزش بیشتر</h2>
+        <p>با رزرو بسته‌های ترکیبی ماساژ، از تخفیف‌های ویژه آریسا بهره‌مند شوید.</p>
+    </div>
+</section>
+
+<section class="hall-grid-section">
+    <h2 class="section-subtitle">سالن‌های ماساژ آریسا</h2>
+    <div class="hall-grid">
+        {% for hall in halls %}
+            <div class="hall-card">
+                <img src="{{ hall.image.url }}" alt="{{ hall.name }}">
+                <span>{{ hall.name }}</span>
+            </div>
+        {% empty %}
+            <p>سالنی ثبت نشده است.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'auth_base.html' %}
+{% block title %}ورود | آریسا{% endblock %}
+{% block auth_content %}
+<h2>ورود به حساب کاربری</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
+    <button type="submit" class="auth-submit">ورود</button>
+</form>
+<div class="auth-links">
+    <p><a href="{% url 'accounts:password_reset_request' %}">رمز عبور را فراموش کرده‌اید؟</a></p>
+    <p><a href="{% url 'accounts:otp_login_request' %}">ورود با شماره تماس</a></p>
+    <p><a href="{% url 'accounts:register' %}">حساب کاربری ندارید؟ ثبت‌نام کنید</a></p>
+</div>
+{% endblock %}

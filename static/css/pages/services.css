@@ -1,0 +1,391 @@
+/* ==========================
+   FACILITY CARDS (ماساژ/عمومی)
+   ========================== */
+.facility-grid-section { background: var(--color-bg-dark); padding: 60px 60px 90px; }
+
+.facility-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.facility-card {
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+}
+
+.facility-card:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.facility-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.facility-card:hover img {
+    transform: scale(1.05);
+}
+
+.facility-card img { width: 100%; height: 200px; object-fit: cover; }
+
+.facility-card h3 {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    font-size: 17px;
+    padding: 18px 20px 6px;
+}
+
+.facility-card p {
+    font-size: 13px;
+    color: #b8b8b8;
+    padding: 0 20px 20px;
+    line-height: 1.7;
+}
+
+.massage-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 18px;
+    font-size: 12px;
+    color: var(--color-gold);
+}
+
+/* ==========================
+   PROMO BANNER
+   ========================== */
+.promo-banner {
+    background: linear-gradient(120deg, var(--color-bg-secondary) 0%, #201a08 100%);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 45px 20px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.promo-banner-content h2 {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.promo-banner-content p { color: var(--color-gold-light); font-size: 14px; }
+
+/* ==========================
+   HALLS GRID
+   ========================== */
+.section-subtitle {
+    font-family: var(--font-heading);
+    color: var(--color-gold-light);
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 45px;
+    position: relative;
+    padding-bottom: 20px;
+}
+.section-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 46px;
+    height: 2px;
+    background: var(--color-gold);
+}
+
+.hall-grid-section { padding: 70px 60px 100px; }
+
+.hall-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    justify-content: center;
+    gap: 26px;
+}
+
+.hall-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 300px;
+    cursor: pointer;
+    box-shadow: 0 15px 32px rgba(0,0,0,0.4);
+}
+
+/* حاشیه‌ی طلایی که فقط موقع هاور دیده می‌شه */
+.hall-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212,175,55,0.65);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+.hall-card:hover::before { opacity: 1; }
+
+.hall-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.hall-card:hover img { transform: scale(1.08); }
+
+.hall-card span {
+    position: absolute;
+    bottom: 0; right: 0; left: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+    color: var(--color-gold-light);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    text-align: center;
+    padding: 50px 12px 18px;
+    transition: padding 0.4s ease;
+}
+.hall-card:hover span { padding-bottom: 24px; }
+
+/* ==========================
+   STATIC FACILITY PAGE (استخر)
+   ========================== */
+.facility-static-content {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 60px 20px 90px;
+    text-align: center;
+}
+
+.facility-static-content p { font-size: 15px; line-height: 2; color: #cfcfcf; }
+
+/* ==========================
+   MENU PAGE (رستوران/کافه)
+   ========================== */
+.menu-section { max-width: 850px; margin: 0 auto; padding: 60px 20px 90px; }
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 18px 16px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    border-bottom: 1px dashed rgba(212, 175, 55, 0.2);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(212, 175, 55, 0.06);
+    border-color: transparent;
+    transform: translateX(-4px);
+}
+
+.menu-item-img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.menu-item:hover .menu-item-img {
+    transform: scale(1.06);
+    box-shadow: 0 10px 24px rgba(212,175,55,0.25);
+}
+
+.menu-item-info { flex: 1; min-width: 0; }
+.menu-item-info h4 {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 17px;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+.menu-item:hover .menu-item-info h4 { color: var(--color-gold-light); }
+.menu-item-info p { font-size: 13px; color: #999; line-height: 1.7; }
+
+.menu-item-price {
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--color-gold);
+    font-size: 15px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ==========================
+   NEWS PAGE
+   ========================== */
+.news-list-section { max-width: 1250px; margin: 0 auto; padding: 90px 60px; }
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.news-card {
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+.news-card:hover {
+    border-color: rgba(212, 175, 55, 0.55);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.4);
+}
+
+.news-card-img-wrap {
+    height: 190px;
+    overflow: hidden;
+}
+.news-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.news-card:hover .news-card-img-wrap img { transform: scale(1.08); }
+
+.news-card-body {
+    padding: 22px 24px 26px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-date {
+    font-size: 11px;
+    color: var(--color-gold);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    direction: ltr;
+    display: inline-block;
+    text-align: right;
+}
+
+.news-card-body h4 {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 16.5px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+.news-card:hover h4 { color: var(--color-gold-light); }
+
+.news-card-body p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.8;
+}
+/* ==========================
+   TOOLBAR (جست‌وجو + مرتب‌سازی)
+   ========================== */
+.toolbar-row {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 380px;
+    display: flex;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-bg-charcoal);
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 13px;
+}
+.search-box input::placeholder { color: #777; }
+
+.search-box button {
+    padding: 10px 20px;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+.search-box button:hover { background: var(--color-gold-light); }
+
+.toolbar-row .sort-dropdown { margin: 0; }
+/* ==========================
+   SORT DROPDOWN
+   ========================== */
+.sort-dropdown {
+    position: relative;
+}
+
+.sort-toggle {
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212,175,55,0.3);
+    color: var(--color-gold-light);
+    padding: 10px 18px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.sort-toggle:hover { border-color: var(--color-gold); }
+
+.sort-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 10;
+    min-width: 170px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+}
+.sort-menu.open { display: block; }
+
+.sort-menu a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #ccc;
+    white-space: nowrap;
+}
+.sort-menu a:hover { background: rgba(212,175,55,0.15); color: var(--color-gold); }

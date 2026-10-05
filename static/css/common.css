@@ -1,0 +1,540 @@
+/* =========================================================
+   ARISA HOTEL — COMMON CSS (Variables, Header, Hero, Footer)
+   ========================================================= */
+
+/* =========================================================
+   1. VARIABLES
+   ========================================================= */
+:root {
+    --color-bg-dark: #0D0D0F;
+    --color-bg-secondary: #161616;
+    --color-bg-charcoal: #1E1E21;
+
+    --color-gold: #D4AF37;
+    --color-gold-light: #C8A97E;
+
+    --color-white-warm: #F5F5F5;
+
+    --color-text-muted: #999;
+    --color-border: rgba(212, 175, 55, 0.28);
+
+    --font-heading: 'Playfair Display', 'Noto Naskh Arabic', serif;
+    --font-body: 'Yekan Bakh', 'Noto Sans Arabic', sans-serif;
+}
+
+/* =========================================================
+   2. GLOBAL
+   ========================================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--color-bg-dark);
+    color: var(--color-white-warm);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button, input, textarea, select { font-family: inherit; }
+
+/* =========================================================
+   3. HEADER (مشترک در کل سایت)
+   ========================================================= */
+.site-header {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    z-index: 100;
+    height: 100px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.4s ease, height 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.site-header.scrolled {
+    height: 78px;
+    background: rgba(13, 13, 15, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-color: rgba(212, 175, 55, 0.18);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 70px;
+    z-index: 101;
+}
+
+.logo img {
+    width: 92px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65));
+    transition: transform 0.3s ease, width 0.4s ease;
+}
+.site-header.scrolled .logo img { width: 78px; }
+.logo img:hover { transform: scale(1.03); }
+
+.main-nav {
+    position: absolute;
+    top: 38px;
+    right: 220px;
+    left: 220px;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    direction: rtl;
+}
+
+.main-nav a {
+    position: relative;
+    color: var(--color-white-warm);
+    font-size: 13px;
+    white-space: nowrap;
+    padding: 6px 0;
+    transition: color 0.3s;
+}
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0; left: 0;
+    height: 1px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.main-nav a:hover { color: var(--color-gold); }
+.main-nav a:hover::after { transform: scaleX(1); }
+/* ---- دراپ‌داون خدمات رفاهی ---- */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-dropdown-trigger .caret {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+.nav-dropdown:hover .nav-dropdown-trigger .caret { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translateX(50%) translateY(8px);
+    min-width: 140px;
+    background: rgba(13, 13, 15, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 6px;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    z-index: 102;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(50%) translateY(4px);
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 9px 14px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #ddd;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-dropdown-menu a::after { display: none; } 
+.nav-dropdown-menu a:hover { background: rgba(212, 175, 55, 0.12); color: var(--color-gold); }
+
+.header-actions {
+    position: absolute;
+    top: 26px;
+    right: 70px;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    direction: rtl;
+}
+
+.header-actions > a {
+    min-width: 70px;
+    height: 36px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white-warm);
+    background: rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(212, 175, 55, 0.65);
+    font-size: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.header-actions > a:hover {
+    color: var(--color-bg-dark);
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.header-actions .reserve-btn {
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-weight: 600;
+    border-color: var(--color-gold);
+}
+.header-actions .reserve-btn:hover { background: var(--color-gold-light); }
+
+.header-actions .profile-icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    background: var(--color-gold) !important;
+    color: var(--color-bg-dark) !important;
+    border-color: var(--color-gold) !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+.header-actions .profile-icon:hover { background: var(--color-gold-light) !important; }
+/* =========================================================
+   4. HERO (صفحه‌ی ایندکس)
+   ========================================================= */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 70px;
+    transform: translateY(-52%);
+    z-index: 5;
+    width: 480px;
+    text-align: right;
+    direction: rtl;
+}
+
+.hero-brand {
+    direction: ltr;
+    font-family: var(--font-heading);
+    font-size: clamp(58px, 6vw, 100px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 8px;
+    color: var(--color-gold);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+
+.hero-divider {
+    width: 360px;
+    margin: 25px 0 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hero-divider span {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.75));
+}
+
+.hero-divider span:last-child {
+    background: linear-gradient(to left, transparent, rgba(212, 175, 55, 0.75));
+}
+
+.hero-divider b {
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    margin: 0 0 5px;
+    color: var(--color-gold-light);
+    font-family: var(--font-heading);
+    font-size: 31px;
+    font-weight: 600;
+    line-height: 1.7;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero-description {
+    margin: 0 0 27px;
+    max-width: 550px;
+    color: #d8c9a3;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 2;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.8);
+}
+
+.hero-cta {
+    min-width: 245px;
+    height: 58px;
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--color-gold-light);
+    background: rgba(5, 8, 11, 0.24);
+    border: 1px solid rgba(212, 175, 55, 0.78);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-cta span { font-size: 23px; line-height: 1; transition: transform 0.3s ease; }
+
+.hero-cta:hover {
+    color: #111;
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.hero-cta:hover span { transform: translateX(-5px); }
+
+/* =========================================================
+   5. PAGE HERO (هیروی مشترک صفحات داخلی)
+   ========================================================= */
+.page-hero-variant {
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hero-brand-fa {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    color: var(--color-gold-light);
+    text-shadow: 0 2px 18px rgba(0,0,0,0.65);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   6. FOOTER
+   ========================================================= */
+.site-footer {
+    width: 100%;
+    background: var(--color-bg-dark);
+    color: var(--color-white-warm);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    direction: rtl;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 38px 45px 32px;
+    display: grid;
+    grid-template-columns: 1.35fr 0.9fr 0.9fr 1.15fr 1.35fr;
+    gap: 38px;
+    align-items: start;
+}
+
+.footer-brand { min-width: 0; }
+
+.footer-logo { display: inline-block; margin-bottom: 12px; }
+
+.footer-logo img { width: 105px; height: 58px; object-fit: contain; object-position: center; }
+
+.footer-brand p {
+    width: 190px;
+    margin: 0 0 17px;
+    color: #929292;
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 1.9;
+}
+
+.footer-socials { display: flex; align-items: center; gap: 7px; }
+
+.footer-socials a {
+    width: 23px; height: 23px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid #555;
+    border-radius: 50%;
+    color: #bdbdbd;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    transition: all 0.25s ease;
+}
+
+.footer-socials a:hover { color: var(--color-bg-dark); background: var(--color-gold); border-color: var(--color-gold); }
+
+.footer-section, .footer-newsletter { min-width: 0; }
+
+.footer-section h4, .footer-newsletter h4 {
+    margin: 1px 0 17px;
+    color: var(--color-gold);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.footer-section > a {
+    display: block;
+    width: fit-content;
+    margin-bottom: 7px;
+    color: #858585;
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 1.6;
+    transition: color 0.25s ease;
+}
+
+.footer-section > a:hover { color: var(--color-gold); }
+
+.footer-contact .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: #858585;
+    font-family: var(--font-body);
+    font-size: 9px;
+    line-height: 1.7;
+}
+
+.contact-icon { width: 12px; flex-shrink: 0; color: var(--color-gold); font-size: 11px; text-align: center; }
+
+.footer-newsletter p {
+    width: 185px;
+    margin: 0 0 13px;
+    color: #858585;
+    font-family: var(--font-body);
+    font-size: 9px;
+    line-height: 1.9;
+}
+
+.newsletter-form { width: 190px; height: 31px; display: flex; direction: ltr; }
+
+.newsletter-form input {
+    flex: 1; min-width: 0; height: 31px;
+    padding: 0 9px;
+    background: transparent;
+    border: 1px solid #444;
+    border-left: none;
+    outline: none;
+    color: #ddd;
+    font-family: var(--font-body);
+    font-size: 9px;
+    direction: rtl;
+}
+
+.newsletter-form input::placeholder { color: #666; }
+.newsletter-form input:focus { border-color: var(--color-gold); }
+
+.newsletter-form button {
+    width: 31px; height: 31px;
+    flex-shrink: 0;
+    border: none;
+    background: var(--color-gold);
+    color: #151515;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.newsletter-form button:hover { background: var(--color-gold-light); }
+
+.footer-bottom {
+    width: 100%;
+    max-width: 1250px;
+    min-height: 36px;
+    margin: 0 auto;
+    padding: 10px 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    color: #5e5e5e;
+    font-family: var(--font-body);
+    font-size: 8px;
+}
+
+.footer-bottom a { color: #686868; transition: color 0.25s ease; }
+.footer-bottom a:hover { color: var(--color-gold); }
+.footer-bottom .separator { margin: 0 8px; color: #353535; }
+
+/* =========================================================
+   7. RESPONSIVE
+   ========================================================= */
+@media (max-width: 1000px) {
+    .logo img { width: 80px; }
+    .hero-content { width: 420px; left: 35px; }
+    .hero-brand { font-size: 75px; }
+    .hero-subtitle { font-size: 27px; }
+    .footer-container { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+    .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 700px) {
+    .hero { min-height: 760px; background-position: 63% center; }
+    .logo { top: 15px; left: 20px; }
+    .logo img { width: 70px; }
+    .header-actions { top: 18px; right: 20px; gap: 5px; }
+    .header-actions > a { min-width: auto; height: 32px; padding: 0 9px; font-size: 10px; }
+    .header-actions .profile-icon { width: 32px !important; min-width: 32px !important; }
+    .main-nav { display: none; }
+
+    .hero-content {
+        width: calc(100% - 40px);
+        left: 20px;
+        top: 55%;
+        text-align: center;
+    }
+    .hero-brand { font-size: 54px; letter-spacing: 5px; }
+    .hero-divider { width: 220px; margin: 17px auto 20px; }
+    .hero-subtitle { font-size: 23px; line-height: 1.8; }
+    .hero-description { font-size: 13px; margin-bottom: 22px; }
+    .hero-cta { min-width: 200px; height: 50px; padding: 0 22px; font-size: 13px; }
+
+    .footer-container { grid-template-columns: 1fr 1fr; padding: 35px 25px 25px; gap: 30px 20px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-brand p { width: 100%; max-width: 280px; }
+    .footer-newsletter { grid-column: 1 / -1; }
+    .footer-newsletter p { width: 100%; max-width: 280px; }
+    .newsletter-form { width: 100%; max-width: 280px; }
+    .footer-bottom { padding: 12px 25px; flex-direction: column; align-items: flex-start; gap: 7px; line-height: 1.8; }
+}
+
+@media (max-width: 400px) {
+    .hero-brand { font-size: 47px; letter-spacing: 4px; }
+    .hero-subtitle { font-size: 21px; }
+    .hero-description { font-size: 12px; }
+    .footer-container { grid-template-columns: 1fr; }
+    .footer-section, .footer-newsletter { grid-column: auto; }
+}

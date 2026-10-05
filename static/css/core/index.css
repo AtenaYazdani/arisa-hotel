@@ -1,0 +1,906 @@
+/* ==========================
+   PAGE BACKGROUND (پس‌زمینه یکپارچه‌ی صفحه)
+   ========================== */
+
+/* این بلاک رو روی body یا یه wrapper بیرونی که همه‌ی سکشن‌ها داخلشن بذارید،
+   نه روی هر سکشن جدا؛ همین باعث می‌شه دیگه خط تیز بین بخش‌ها دیده نشه. */
+body {
+    background-color: #08070a;
+    /* وقتی مسیر تصویر مرمر خام رو دادید، خط پایین رو با این جایگزین کنید:
+       background-image:
+           radial-gradient(circle at 15% 10%, rgba(212,175,110,0.05), transparent 40%),
+           radial-gradient(circle at 85% 60%, rgba(212,175,110,0.04), transparent 45%),
+           url('{% static "images/textures/marble-bg.jpg" %}');
+       background-size: cover;
+       background-attachment: fixed;
+       background-blend-mode: overlay;
+    */
+    background-image:
+        radial-gradient(circle at 12% 8%, rgba(212,175,110,0.06), transparent 38%),
+        radial-gradient(circle at 88% 22%, rgba(212,175,110,0.045), transparent 42%),
+        radial-gradient(circle at 20% 85%, rgba(212,175,110,0.04), transparent 40%),
+        radial-gradient(circle at 90% 92%, rgba(212,175,110,0.05), transparent 38%),
+        linear-gradient(180deg, #0a0908 0%, #0d0c0a 30%, #0a0908 60%, #0d0c0a 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* بافت ظریف (grain) روی کل صفحه؛ خیلی محو، فقط لبه‌ی تخت‌بودن رنگ رو می‌شکنه */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/></svg>");
+    mix-blend-mode: overlay;
+}
+
+/* همه‌ی سکشن‌های اصلی صفحه دیگه رنگ تخت و مرزهای تیز نداشته باشن؛
+   پس‌زمینه‌شون شفاف می‌شه تا بک‌گراند body از زیرشون دیده بشه. */
+.about-section,
+.amenities-section,
+.gallery-section,
+.quick-links-section,
+.timeline-section,
+.rooms-showcase-section,
+.holding-section,
+.news-preview-section,
+.stats-section {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+/* یه گذار نرم و محو بالای بخش‌هایی که قبلاً رنگ روشن‌تری داشتن
+   (amenities / timeline / rooms-showcase) تا مرز بین اون‌ها و سکشن قبلی محو بشه */
+.amenities-section::before,
+.timeline-section::before,
+.rooms-showcase-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.25), transparent);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* ==========================
+   ABOUT SECTION
+   ========================== */
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 110px 70px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ---- تصویر ---- */
+.about-image {
+    position: relative;
+}
+
+/* درخشش نرم پشت عکس */
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: -30px;
+    width: 60%;
+    height: 84%;
+    background: radial-gradient(circle, rgba(212,175,110,0.12), transparent 70%);
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+    transition: transform 0.5s ease;
+}
+.about-image:hover img { transform: scale(1.015); }
+
+/* ---- متن ---- */
+.about-text { position: relative; }
+
+.about-text .section-eyebrow {
+    text-align: right;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.about-text .section-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--color-gold);
+}
+
+.about-text h2 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    line-height: 1.5;
+    color: var(--color-white-warm);
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 24px;
+}
+.about-text h2::after {
+    content: '❖';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: var(--color-gold);
+    font-size: 14px;
+}
+
+.about-text p {
+    color: #b3b3b3;
+    font-size: 15.5px;
+    line-height: 2.1;
+    position: relative;
+}
+
+
+/* ==========================
+   AMENITIES BOX
+   ========================== */
+.amenities-section {
+    background: var(--color-bg-charcoal);
+    padding: 100px 70px;
+    position: relative;
+}
+
+.amenities-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(212, 175, 110, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.amenity-box {
+    text-align: center;
+    padding: 55px 30px;
+    position: relative;
+    transition: background 0.35s ease;
+}
+
+/* خط جداکننده‌ی عمودی بین کارت‌ها */
+.amenity-box:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(212,175,110,0.25), transparent);
+}
+
+.amenity-box:hover {
+    background: rgba(212, 175, 110, 0.04);
+}
+
+.amenity-icon {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #2a1f14, #120d08);
+    border: 1px solid rgba(212, 175, 110, 0.5);
+    box-shadow: 0 0 0 5px rgba(212,175,110,0.06);
+    color: var(--color-gold);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.amenity-icon svg {
+    width: 34px;
+    height: 34px;
+}
+
+.amenity-box:hover .amenity-icon {
+    transform: translateY(-6px) scale(1.05);
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 6px rgba(212,175,110,0.12), 0 10px 20px rgba(0,0,0,0.4);
+    color: var(--color-gold-light);
+}
+
+.amenity-box h4 {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 17px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+/* خط طلایی کوچیک زیر عنوان */
+.amenity-box h4::after {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: 12px auto 0;
+    opacity: 0.6;
+    transition: width 0.35s ease;
+}
+.amenity-box:hover h4::after { width: 44px; opacity: 1; }
+
+.amenity-box p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.9;
+}
+
+
+/* ==========================
+   GALLERY (اسلایدی)
+   ========================== */
+.gallery-section {
+    padding: 100px 70px;
+    background: var(--color-bg-dark);
+}
+
+.gallery-track-wrap {
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 6px 2px;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+
+.gallery-item {
+    flex: 0 0 300px;
+    height: 380px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* حاشیه‌ی ظریف طلایی که با هاور نمایان می‌شه */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212,175,110,0.6);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+.gallery-item:hover::before { opacity: 1; }
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0; right: 0; left: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 45%, transparent 100%);
+    color: var(--color-gold-light);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 55px 12px 18px;
+    letter-spacing: 0.3px;
+    transition: padding 0.4s ease;
+}
+.gallery-item:hover .gallery-caption { padding-bottom: 24px; }
+
+/* دکمه‌های فلش */
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(10, 8, 5, 0.75);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(212,175,110,0.4);
+    color: var(--color-gold);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+.gallery-arrow:hover {
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    border-color: var(--color-gold);
+    box-shadow: 0 0 20px rgba(212,175,110,0.5);
+}
+.gallery-arrow.prev { right: -22px; }
+.gallery-arrow.next { left: -22px; }
+
+
+/* ==========================
+   FEATURES STRIP (امکانات ویژه)
+   ========================== */
+.features-strip { padding: 70px 40px; background: var(--color-bg-secondary); border-top: 1px solid rgba(212,175,55,0.1); }
+.features-strip-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(8, 1fr); gap: 20px; }
+.feature-item { text-align: center; }
+.feature-icon { display: block; font-size: 26px; margin-bottom: 10px; }
+.feature-item p { font-size: 12px; color: #ccc; }
+
+
+/* ==========================
+   TIMELINE (مسیر پیشرفت)
+   ========================== */
+.timeline-section {
+    padding: 100px 40px;
+    background: var(--color-bg-charcoal);
+    position: relative;
+    overflow: hidden;
+}
+
+/* نور محو طلایی پس‌زمینه برای عمق بیشتر */
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(212,175,110,0.05), transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.timeline-track {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+    padding-top: 46px;
+}
+
+/* خط اصلی تایم‌لاین */
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 12.5%;
+    left: 12.5%;
+    height: 1px;
+    background: linear-gradient(to left, rgba(212,175,110,0.05), rgba(212,175,110,0.6) 15%, rgba(212,175,110,0.6) 85%, rgba(212,175,110,0.05));
+}
+
+.timeline-step {
+    text-align: center;
+    position: relative;
+}
+
+/* نقطه‌ی روی خط برای هر مرحله */
+.timeline-step::before {
+    content: '';
+    position: absolute;
+    top: -46px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--color-bg-charcoal);
+    border: 1.5px solid var(--color-gold);
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+/* حلقه‌ی درخشش دور نقطه */
+.timeline-step::after {
+    content: '';
+    position: absolute;
+    top: -52px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,110,0.25);
+    transition: all 0.4s ease;
+}
+
+.timeline-step:hover::before {
+    background: var(--color-gold);
+    box-shadow: 0 0 14px rgba(212,175,110,0.7);
+}
+.timeline-step:hover::after {
+    width: 34px;
+    height: 34px;
+    top: -55.5px;
+    border-color: rgba(212,175,110,0.5);
+}
+
+.timeline-year {
+    display: inline-block;
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+    padding: 5px 16px;
+    border: 1px solid rgba(212,175,110,0.35);
+    border-radius: 30px;
+    transition: all 0.4s ease;
+}
+.timeline-step:hover .timeline-year {
+    border-color: var(--color-gold);
+    background: rgba(212,175,110,0.08);
+}
+
+.timeline-step h4 {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+.timeline-step:hover h4 { color: var(--color-gold-light); }
+
+.timeline-step p {
+    font-size: 12.5px;
+    color: #999;
+    line-height: 1.8;
+    max-width: 210px;
+    margin: 0 auto;
+}
+
+
+/* ==========================
+   QUICK LINKS
+   ========================== */
+.quick-links-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(20px, 4vw, 55px);
+    padding: 80px 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: nowrap; /* هیچ‌وقت به خط بعد نره */
+}
+
+.quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    color: var(--color-white-warm);
+    font-size: 15px;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+}
+.quick-link:hover { transform: translateY(-6px); }
+.quick-link:hover .quick-link-icon { box-shadow: 0 0 0 3px #0c0805, 0 0 22px rgba(212,175,110,0.55); }
+.quick-link:hover span:last-child { color: var(--color-gold); }
+
+.quick-link-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0c0805;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow:
+        inset 0 0 0 2px #d4af6e,
+        0 0 0 3px #0c0805,
+        0 0 0 4px rgba(212,175,110,0.4),
+        0 6px 14px rgba(0,0,0,0.5);
+    transition: box-shadow 0.3s;
+}
+
+.quick-link-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.18);
+    display: block;
+}
+
+
+/* ==========================
+   ROOMS SHOWCASE
+   ========================== */
+.rooms-showcase-section { padding: 90px 70px; background: var(--color-bg-charcoal); }
+.rooms-showcase-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 380px));
+    justify-content: center; /* اگه کارت‌ها کمتر از ۳ تا بودن، به‌جای کشیده‌شدن نامتوازن، وسط‌چین می‌شن */
+    gap: 30px;
+}
+
+.room-showcase-card {
+    position: relative;
+    height: 380px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: block;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* حاشیه‌ی طلایی ظریف موقع هاور، هماهنگ با بقیه‌ی کارت‌های سایت */
+.room-showcase-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212,175,110,0.6);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+.room-showcase-card:hover::before { opacity: 1; }
+
+.room-showcase-card img,
+.room-showcase-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.room-showcase-card:hover img { transform: scale(1.08); }
+.room-showcase-placeholder { background: linear-gradient(135deg, #2a2213, #1a1a1a); }
+
+.room-showcase-info {
+    position: absolute; bottom: 0; right: 0; left: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 45%, transparent 100%);
+    padding: 45px 20px 22px; text-align: center;
+    transition: padding 0.4s ease;
+}
+.room-showcase-card:hover .room-showcase-info { padding-bottom: 28px; }
+.room-showcase-info h4 { font-family: var(--font-heading); color: var(--color-gold-light); font-size: 18px; margin-bottom: 6px; }
+.room-showcase-info p { font-size: 12px; color: #ccc; }
+
+
+/* ==========================
+   HOLDING SECTION
+   ========================== */
+.holding-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 110px 70px;
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ---- تصویر با قاب طلایی و عمق ---- */
+.holding-image {
+    position: relative;
+    border-radius: 6px;
+}
+.holding-image::before {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border: 1px solid rgba(212, 175, 110, 0.35);
+    border-radius: 10px;
+    z-index: -1;
+    transition: inset 0.4s ease;
+}
+.holding-image::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 90px;
+    height: 90px;
+    border-bottom: 2px solid var(--color-gold);
+    border-right: 2px solid var(--color-gold);
+    border-radius: 0 0 6px 0;
+    z-index: -1;
+}
+.holding-image img {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+}
+.holding-image:hover::before { inset: -12px; }
+
+/* ---- متن ---- */
+.holding-text { position: relative; }
+
+.holding-text .section-eyebrow {
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.holding-text h1 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-white-warm);
+    margin-bottom: 28px;
+    position: relative;
+    padding-bottom: 22px;
+}
+.holding-text h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--color-gold);
+}
+.holding-text h1::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: 66px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-gold);
+}
+
+.holding-text > p {
+    color: #b3b3b3;
+    font-size: 15px;
+    line-height: 2.1;
+    margin-bottom: 46px;
+}
+
+.holding-text h2 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--color-white-warm);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+/* شماره‌ی تزئینی کنار عنوان دوم */
+.holding-text h2::before {
+    content: '٠٢';
+    font-family: var(--font-heading);
+    font-size: 14px;
+    color: var(--color-bg-charcoal);
+    background: var(--color-gold);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.holding-text h2 + p {
+    color: #b3b3b3;
+    font-size: 15px;
+    line-height: 2.1;
+    border-right: 2px solid rgba(212,175,110,0.3);
+    padding-right: 20px;
+}
+
+
+/* ==========================
+   NEWS PREVIEW
+   ========================== */
+.news-preview-section { max-width: 1250px; margin: 0 auto; padding: 90px 60px; }
+
+.news-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(212,175,110,0.15);
+}
+.news-preview-header .section-title {
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.news-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212,175,110,0.14);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.35s ease, transform 0.35s ease;
+}
+.news-card:hover {
+    border-color: rgba(212,175,110,0.5);
+    transform: translateY(-5px);
+}
+
+/* اگه خبر عکس داشته باشه */
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.news-card:hover img { transform: scale(1.06); }
+
+/* اگه خبر عکس نداشته باشه، یه هدر تزئینی طلایی به‌جای عکس بذاریم
+   تا ارتفاع و ظاهر کارت‌ها یکدست بمونه */
+.news-card:not(:has(img))::before {
+    content: '';
+    display: block;
+    height: 180px;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(212,175,110,0.12), transparent 60%),
+        linear-gradient(135deg, #1c1712, #100d0a);
+    border-bottom: 1px solid rgba(212,175,110,0.12);
+}
+
+.news-card-body {
+    padding: 22px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-date {
+    font-size: 11.5px;
+    color: var(--color-gold);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    display: inline-block;
+    direction: ltr;
+    text-align: right;
+}
+
+.news-card-body h4 {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    flex-grow: 1;
+    transition: color 0.3s ease;
+}
+.news-card:hover h4 { color: var(--color-gold-light); }
+
+.news-readmore {
+    color: var(--color-gold);
+    font-size: 12.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: auto;
+    transition: gap 0.3s ease;
+}
+.news-card:hover .news-readmore { gap: 8px; }
+
+
+/* ==========================
+   STATS
+   ========================== */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(212,175,110,0.12);
+    border-bottom: 1px solid rgba(212,175,110,0.12);
+}
+
+.stat-item {
+    position: relative;
+    padding: 10px 20px;
+    transition: transform 0.35s ease;
+}
+
+/* جداکننده‌ی عمودی بین آیتم‌ها */
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(212,175,110,0.2), transparent);
+}
+
+.stat-item:hover { transform: translateY(-4px); }
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    font-size: 34px;
+    margin-bottom: 12px;
+    position: relative;
+    transition: text-shadow 0.35s ease;
+}
+.stat-item:hover .stat-number {
+    text-shadow: 0 0 18px rgba(212,175,110,0.5);
+}
+
+/* خط کوچیک تزئینی زیر عدد */
+.stat-number::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-gold);
+    opacity: 0.5;
+    margin: 14px auto 0;
+    transition: width 0.35s ease, opacity 0.35s ease;
+}
+.stat-item:hover .stat-number::after {
+    width: 40px;
+    opacity: 1;
+}
+
+.stat-item p {
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+.stat-item:hover p { color: #ccc; }
+
+
+/* ==========================
+   عناصر مشترک این صفحه
+   ========================== */
+.section-eyebrow { text-align: center; color: var(--color-gold); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { text-align: center; font-family: var(--font-heading); color: var(--color-white-warm); font-size: 28px; margin-bottom: 45px; }
+.section-cta-wrap { text-align: center; margin-top: 40px; }
+.section-cta { display: inline-block; border: 1px solid var(--color-gold); color: var(--color-gold); padding: 13px 38px; font-size: 14px; transition: all 0.3s; }
+.section-cta:hover { background: var(--color-gold); color: var(--color-bg-dark); }
+.section-cta.small { padding: 9px 22px; font-size: 12px; }

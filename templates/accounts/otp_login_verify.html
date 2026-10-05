@@ -1,0 +1,15 @@
+{% extends 'auth_base.html' %}
+{% block title %}تأیید کد ورود | آریسا{% endblock %}
+{% block auth_content %}
+<h2>کد ارسال‌شده را وارد کنید</h2>
+<form method="post">
+    {% csrf_token %}
+    <p><input type="text" name="code" placeholder="کد ۶ رقمی" maxlength="6"></p>
+    <button type="submit" class="auth-submit">تأیید و ورود</button>
+</form>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="resend" value="1">
+    <button type="submit" class="auth-submit" style="background:transparent; color:var(--color-gold); border:1px solid var(--color-gold); margin-top:12px;">ارسال مجدد کد</button>
+</form>
+{% endblock %}

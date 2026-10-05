@@ -1,0 +1,548 @@
+/* =========================================================
+   ROOMS — SHARED
+   ========================================================= */
+.rooms-section-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 28px;
+    margin-bottom: 45px;
+}
+
+.rooms-section-eyebrow {
+    text-align: center;
+    color: var(--color-gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+/* =========================================================
+   1. CATEGORY LIST (زیگزاگ)
+   ========================================================= */
+.category-list-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 60px;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.category-row:nth-child(even) { direction: ltr; }
+.category-row:nth-child(even) .category-card { direction: rtl; }
+
+.category-image { height: 340px; overflow: hidden; position: relative; z-index: 1; }
+.category-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.category-card {
+    position: relative;
+    z-index: 2;
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    margin: 0 -40px;
+    padding: 50px 45px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.category-row:hover .category-card {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-gold);
+}
+
+.category-card .en-name {
+    font-family: var(--font-heading);
+    letter-spacing: 3px;
+    color: var(--color-gold);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.category-card .fa-name {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.category-card .category-desc {
+    color: #a8a8a8;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+    min-height: 20px;
+}
+
+.category-card .category-link {
+    display: inline-block;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    padding: 10px 30px;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.category-card .category-link:hover { background: var(--color-gold); color: var(--color-bg-dark); }
+.category-image {
+    height: 340px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.category-row:hover .category-image img {
+    transform: scale(1.05);
+}
+/* =========================================================
+   2. ROOM CARDS GRID (لیست اتاق‌های یک دسته)
+   ========================================================= */
+.room-cards-section { max-width: 1200px; margin: 0 auto; padding: 90px 60px; }
+
+.room-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.room-card {
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.room-card:hover { border-color: var(--color-gold); transform: translateY(-4px); }
+
+.room-card-image { position: relative; height: 220px; }
+.room-card-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.room-card-image .room-badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: rgba(13,13,15,0.75);
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold-light);
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 3px;
+}
+
+.room-card-body { padding: 22px 22px 26px; }
+
+.room-card-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.room-card-price { color: var(--color-gold); font-size: 17px; font-weight: 700; }
+.room-card-price span { color: #999; font-size: 12px; font-weight: 400; }
+.room-card-code { color: #777; font-size: 11px; }
+
+.room-card-name {
+    font-family: var(--font-heading);
+    color: var(--color-white-warm);
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.room-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.2);
+    font-size: 12px;
+    color: #aaa;
+}
+
+.room-card-meta span { display: flex; align-items: center; gap: 5px; }
+.room-card-meta .icon { color: var(--color-gold); }
+
+.room-card-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 11px;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.room-card-link:hover { background: var(--color-gold); color: var(--color-bg-dark); }
+
+/* =========================================================
+   3. ROOM DETAIL PAGE
+   ========================================================= */
+.room-detail-header {
+    max-width: 1200px;
+    margin: 60px auto 40px;
+    padding: 0 60px;
+    text-align: center;
+}
+
+.room-detail-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-white-warm);
+    margin-bottom: 14px;
+}
+
+.room-detail-desc {
+    color: #b8b8b8;
+    font-size: 14px;
+    max-width: 650px;
+    margin: 0 auto 25px;
+    line-height: 1.9;
+}
+.room-detail-desc-below {
+    color: #b8b8b8;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.2);
+}
+
+.room-detail-chips { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+.room-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-size: 13px;
+    color: var(--color-gold-light);
+    transition: border-color 0.3s ease;
+}
+
+.room-detail-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px 90px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 35px;
+    align-items: start;
+}
+.room-chip:hover { border-color: var(--color-gold); }
+
+.chip-label {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 0.3px;
+}
+
+.gallery-radio { display: none; }
+
+.room-gallery-main {
+    position: relative;
+    height: 420px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: var(--color-bg-charcoal);
+}
+
+.gallery-main-slide {
+    position: absolute;
+    inset: 0;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease;
+    cursor: default;
+}
+.gallery-main-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+#gallery-img-1:checked ~ .room-gallery-main .gallery-main-slide:nth-of-type(1),
+#gallery-img-2:checked ~ .room-gallery-main .gallery-main-slide:nth-of-type(2),
+#gallery-img-3:checked ~ .room-gallery-main .gallery-main-slide:nth-of-type(3) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.room-gallery-badge {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    background: rgba(13,13,15,0.75);
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold-light);
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.room-gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.room-gallery-thumbs .thumb {
+    display: block;
+    height: 110px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--color-bg-charcoal);
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.65;
+}
+.room-gallery-thumbs .thumb:hover { opacity: 1; }
+.room-gallery-thumbs .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+#gallery-img-1:checked ~ .room-gallery-thumbs .thumb:nth-of-type(1),
+#gallery-img-2:checked ~ .room-gallery-thumbs .thumb:nth-of-type(2),
+#gallery-img-3:checked ~ .room-gallery-thumbs .thumb:nth-of-type(3) {
+    border-color: var(--color-gold);
+    opacity: 1;
+}
+
+.room-gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.room-gallery-thumbs .thumb { height: 110px; border-radius: 6px; overflow: hidden; background: var(--color-bg-charcoal); }
+.room-gallery-thumbs .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* باکس رزرو */
+.booking-box {
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 6px;
+    padding: 30px;
+}
+
+.booking-box h3 { font-family: var(--font-heading); color: var(--color-gold); font-size: 19px; margin-bottom: 22px; }
+
+/* پیام‌های خطا/موفقیت داخل باکس رزرو */
+.booking-alert {
+    padding: 13px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.booking-alert-error {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.5);
+    color: #ff8a94;
+}
+
+.booking-alert-success {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold-light);
+}
+
+.booking-alert-warning {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    color: #ffd670;
+}
+
+.booking-box label { display: block; font-size: 12px; color: #c9c0ac; margin-bottom: 6px; margin-top: 16px; }
+.booking-box label:first-of-type { margin-top: 0; }
+
+.booking-box input, .booking-box textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 13px;
+}
+
+.booking-submit {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.booking-submit:hover { background: var(--color-gold-light); }
+
+.booking-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(212,175,55,0.2);
+    font-size: 12px;
+    color: #aaa;
+}
+
+.booking-meta span { display: flex; align-items: center; gap: 5px; }
+.booking-meta .icon { color: var(--color-gold); }
+
+/* امکانات اتاق */
+.room-amenities-section { max-width: 1200px; margin: 0 auto; padding: 0 60px 90px; }
+
+.room-amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 40px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.room-amenity-item {
+    background: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    border-radius: 6px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--color-bg-dark);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    cursor: default;
+}
+
+.room-amenity-item:hover {
+    background: var(--color-gold-light);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+
+.room-amenity-item img {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.room-amenity-item .no-icon {
+    color: var(--color-bg-dark);
+    font-size: 14px;
+}
+.sort-dropdown { position: relative; max-width: 1200px; margin: 0 auto 20px; display: flex; justify-content: flex-end; }
+.sort-toggle {
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212,175,55,0.3);
+    color: var(--color-gold-light);
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.sort-menu {
+    display: none;
+    position: absolute;
+    top: 38px;
+    left: 0;
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 10;
+    min-width: 160px;
+}
+.sort-menu.open { display: block; }
+.sort-menu a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #ccc;
+}
+.sort-menu a:hover { background: rgba(212,175,55,0.15); color: var(--color-gold); }
+.room-desc-card {
+    margin-top: 22px;
+    padding: 22px 24px;
+    background: var(--color-bg-charcoal);
+    border-right: 2px solid var(--color-gold);
+    border-radius: 4px;
+}
+.room-desc-card p {
+    color: #c9c9c9;
+    font-size: 14.5px;
+    line-height: 2;
+}
+/* ==========================
+   TOOLBAR (جست‌وجو + مرتب‌سازی)
+   ========================== */
+.toolbar-row {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 380px;
+    display: flex;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-bg-charcoal);
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 13px;
+}
+.search-box input::placeholder { color: #777; }
+
+.search-box button {
+    padding: 10px 20px;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+.search-box button:hover { background: var(--color-gold-light); }
+
+/* توی toolbar-row، دیگه نیازی به margin-bottom جدا برای sort-dropdown نیست */
+.toolbar-row .sort-dropdown { margin: 0; }

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}اتاق‌ها و سوئیت‌ها | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/rooms/rooms.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow="تجربه‌ای فراتر از اقامت" title="اتاق‌هایی برای هر سلیقه" description="از اتاق‌های دلوکس تا سوئیت‌های مجلل، اقامتی بی‌نظیر و خاطره‌انگیز را در آریسا تجربه کنید." hero_image="images/pages/rooms-hero.jpg" cta_text="مشاهده اتاق‌ها" cta_link="#categories" %}
+
+<section class="category-list-section" id="categories">
+    <p class="rooms-section-eyebrow">دسته‌بندی اقامت</p>
+    <h2 class="rooms-section-title">اتاق‌ها بر اساس نوع</h2>
+
+    {% for category in categories %}
+        <div class="category-row">
+            <div class="category-image">
+    {% if category.image %}
+        <img src="{{ category.image.url }}" alt="{{ category.name_fa }}">
+    {% endif %}
+</div>
+            <div class="category-card">
+                <p class="en-name">{{ category.name_en }}</p>
+                <p class="fa-name">{{ category.name_fa }}</p>
+                <p class="category-desc">{{ category.description }}</p>
+                <a href="{% url 'rooms:category' category.id %}" class="category-link">مشاهده اتاق‌ها</a>
+            </div>
+        </div>
+    {% empty %}
+        <p style="text-align:center;">در حال حاضر دسته‌بندی‌ای ثبت نشده است.</p>
+    {% endfor %}
+</section>
+{% endblock %}

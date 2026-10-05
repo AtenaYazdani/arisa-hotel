@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ room.name }} | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/rooms/rooms.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="room-detail-header">
+    <h1 class="room-detail-title">{{ room.name }}</h1>
+    <div class="room-detail-chips">
+        <div class="room-chip"><span class="chip-label">قیمت: </span>{{ room.price|floatformat:0 }} تومان / شب</div>
+        {% if room.bed_type %}<div class="room-chip"><span class="chip-label">نوع تخت: </span>{{ room.bed_type }}</div>{% endif %}
+        {% if room.view_type %}<div class="room-chip"><span class="chip-label">چشم‌انداز: </span>{{ room.view_type }}</div>{% endif %}
+        {% if room.size_sqm %}<div class="room-chip"><span class="chip-label">متراژ: </span>{{ room.size_sqm }} متر مربع</div>{% endif %}
+        {% if room.capacity_label %}<div class="room-chip"><span class="chip-label">ظرفیت: </span>{{ room.capacity_label }}</div>{% endif %}
+    </div>
+</section>
+
+<section class="room-detail-main">
+    <div>
+        <div class="room-gallery">
+            <input type="radio" name="room-gallery-select" id="gallery-img-1" class="gallery-radio" checked>
+            <input type="radio" name="room-gallery-select" id="gallery-img-2" class="gallery-radio">
+            <input type="radio" name="room-gallery-select" id="gallery-img-3" class="gallery-radio">
+
+            <div class="room-gallery-main">
+                <label for="gallery-img-1" class="gallery-main-slide">
+                    {% if images.0 %}<img src="{{ images.0.image.url }}" alt="{{ room.name }}">{% endif %}
+                </label>
+                <label for="gallery-img-2" class="gallery-main-slide">
+                    {% if images.1 %}<img src="{{ images.1.image.url }}" alt="{{ room.name }}">{% endif %}
+                </label>
+                <label for="gallery-img-3" class="gallery-main-slide">
+                    {% if images.2 %}<img src="{{ images.2.image.url }}" alt="{{ room.name }}">{% endif %}
+                </label>
+                <span class="room-gallery-badge">مشاهده همه تصاویر</span>
+            </div>
+
+            <div class="room-gallery-thumbs">
+                <label for="gallery-img-1" class="thumb">
+                    {% if images.0 %}<img src="{{ images.0.image.url }}" alt="">{% endif %}
+                </label>
+                <label for="gallery-img-2" class="thumb">
+                    {% if images.1 %}<img src="{{ images.1.image.url }}" alt="">{% endif %}
+                </label>
+                <label for="gallery-img-3" class="thumb">
+                    {% if images.2 %}<img src="{{ images.2.image.url }}" alt="">{% endif %}
+                </label>
+            </div>
+        </div>
+
+        {% if room.description %}
+            <div class="room-desc-card">
+                <p>{{ room.description }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="booking-box">
+        <h3>رزرو اقامت</h3>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="booking-alert booking-alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'reservations:create' room.id %}">
+            {% csrf_token %}
+            <label>تاریخ ورود</label>
+            <input type="date" name="check_in" required>
+            <label>تاریخ خروج</label>
+            <input type="date" name="check_out" required>
+            <label>اسامی مهمانان (اختیاری)</label>
+            <textarea name="guest_names" rows="2" placeholder="هر نام در یک خط"></textarea>
+            <label>توضیحات (اختیاری)</label>
+            <textarea name="note" rows="2"></textarea>
+            <button type="submit" class="booking-submit">بررسی و ثبت رزرو</button>
+        </form>
+        <div class="booking-meta">
+            {% if room.capacity_label %}<span><span class="icon">◍</span> {{ room.capacity_label }}</span>{% endif %}
+            {% if room.size_sqm %}<span><span class="icon">▢</span> {{ room.size_sqm }} متر</span>{% endif %}
+            <span><span class="icon">✎</span> کد {{ room.code }}</span>
+        </div>
+    </div>
+</section>
+
+{% if room.amenities.all %}
+<section class="room-amenities-section">
+    <h2 class="rooms-section-title">امکانات اتاق</h2>
+    <div class="room-amenities-grid">
+        {% for amenity in room.amenities.all %}
+            <div class="room-amenity-item">
+                {% if amenity.icon %}<img src="{{ amenity.icon.url }}" alt="{{ amenity.name }}">{% else %}<span class="no-icon">✧</span>{% endif %}
+                <span>{{ amenity.name }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

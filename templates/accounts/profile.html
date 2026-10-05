@@ -1,0 +1,49 @@
+{% extends 'profile_base.html' %}
+{% block title %}اطلاعات حساب | آریسا{% endblock %}
+{% block profile_content %}
+<h2>اطلاعات حساب کاربری</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <p>
+        <label>نام</label>
+        {{ form.first_name }}
+    </p>
+    <p>
+        <label>نام خانوادگی</label>
+        {{ form.last_name }}
+    </p>
+    <p>
+        <label>ایمیل</label>
+        {{ form.email }}
+    </p>
+    <p>
+        <label>آدرس</label>
+        {{ form.address }}
+    </p>
+    <p>
+        <label>تاریخ تولد</label>
+        {{ form.birth_date }}
+    </p>
+    <p>
+        <label>جنسیت</label>
+        {{ form.gender }}
+    </p>
+    <p>
+        <label>عکس پروفایل</label>
+        {{ form.profile_image }}
+    </p>
+
+    <p>
+        <label>کد ملی (غیرقابل تغییر)</label>
+        <input type="text" value="{{ user.national_code }}" disabled>
+    </p>
+    <p>
+        <label>شماره تماس (غیرقابل تغییر)</label>
+        <input type="text" value="{{ user.phone }}" disabled>
+    </p>
+
+    <button type="submit" class="auth-submit">ذخیره تغییرات</button>
+</form>
+{% endblock %}

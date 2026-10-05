@@ -1,0 +1,26 @@
+{% extends 'profile_base.html' %}
+{% block title %}رزروهای من | آریسا{% endblock %}
+{% block profile_content %}
+<h2>رزروهای من</h2>
+{% if reservations %}
+    <div class="reservation-cards">
+        {% for r in reservations %}
+            <div class="reservation-card">
+                <div class="reservation-card-top">
+                    <h4>{{ r.room_type.name }}</h4>
+                    <span class="reservation-status status-{{ r.status }}">{{ r.get_status_display }}</span>
+                </div>
+                <div class="reservation-card-dates">
+                    <span><span class="icon">▸</span> ورود: {{ r.jalali_check_in }}</span>
+                    <span><span class="icon">◂</span> خروج: {{ r.jalali_check_out }}</span>
+                </div>
+                <div class="reservation-card-footer">
+                    <span class="confirmation-code">کد تأیید: {{ r.confirmation_code }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="empty-state">شما هنوز رزروی ثبت نکرده‌اید.</p>
+{% endif %}
+{% endblock %}

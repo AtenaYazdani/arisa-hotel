@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ title }} | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow=eyebrow title=title description=description hero_image=hero_image cta_text=cta_text cta_link="#details" %}
+
+<section class="facility-static-content" id="details">
+    <p>{{ description }}</p>
+</section>
+{% endblock %}

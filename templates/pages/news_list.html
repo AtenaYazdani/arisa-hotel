@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}اخبار و رویدادها | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow="NEWS" title="اخبار و رویدادها" description="آخرین اخبار، رویدادها و به‌روزرسانی‌های هتل آریسا را دنبال کنید." hero_image="images/pages/news-hero.jpg" %}
+
+<section class="news-list-section">
+    <h2 class="section-subtitle">تازه‌ترین اخبار</h2>
+
+    {% if news_items %}
+        <div class="news-grid">
+            {% for item in news_items %}
+                <div class="news-card">
+                    {% if item.image %}
+                        <div class="news-card-img-wrap">
+                            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                        </div>
+                    {% endif %}
+                    <div class="news-card-body">
+                        <span class="news-date">{{ item.created_at|date:"Y/m/d" }}</span>
+                        <h4>{{ item.title }}</h4>
+                        <p>{{ item.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty-state" style="text-align:center;">خبری ثبت نشده است.</p>
+    {% endif %}
+</section>
+{% endblock %}

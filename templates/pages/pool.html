@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}استخر آریسا | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow="تجربه‌ای فراتر از آرامش" title="استخر بی‌نهایت آریسا" description="در آغوش آب‌های زلال و فضایی آرامش‌بخش، تجربه‌ای لوکس از استراحت و تجدید انرژی را لمس کنید." hero_image="images/pages/pool-hero.jpg" cta_text="مشاهده امکانات استخر" cta_link="#pool-list" %}
+
+<section class="facility-grid-section" id="pool-list">
+    <div class="facility-grid">
+        {% for feature in features %}
+            <div class="facility-card">
+                <img src="{{ feature.image.url }}" alt="{{ feature.name }}">
+                <h3>{{ feature.name }}</h3>
+                <p>{{ feature.description }}</p>
+            </div>
+        {% empty %}
+            <p>در حال حاضر موردی برای نمایش وجود ندارد.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

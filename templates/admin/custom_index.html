@@ -1,0 +1,19 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+{% include "admin/_unread_message_banner.html" %}
+
+<div class="module" style="margin-bottom: 20px;">
+    <table>
+        <caption>گزارش‌گیری</caption>
+        <tr>
+            <th scope="row"><a href="{% url 'reservations:reservation_report' %}">گزارش رزروها (PDF)</a></th>
+        </tr>
+        <tr>
+            <th scope="row"><a href="{% url 'reservations:financial_report' %}">گزارش مالی (PDF)</a></th>
+        </tr>
+    </table>
+</div>
+
+{{ block.super }}
+{% endblock %}

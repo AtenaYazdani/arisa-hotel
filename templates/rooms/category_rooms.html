@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}{{ category.name_fa }} | آریسا{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/rooms/rooms.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow=category.name_en title=category.name_fa description=category.description hero_image="images/pages/rooms-hero.jpg" %}
+
+<section class="room-cards-section">
+    <p class="rooms-section-eyebrow">{{ category.name_en }}</p>
+    <h2 class="rooms-section-title">اتاق‌های {{ category.name_fa }}</h2>
+
+<div class="toolbar-row">
+    <form method="get" class="search-box">
+        <input type="text" name="q" value="{{ query }}" placeholder="جست‌وجو بر اساس نام یا چشم‌انداز...">
+        {% if current_sort %}<input type="hidden" name="sort" value="{{ current_sort }}">{% endif %}
+        <button type="submit">جست‌وجو</button>
+    </form>
+
+    <div class="sort-dropdown">
+        <button class="sort-toggle" onclick="document.getElementById('sortMenu').classList.toggle('open')">مرتب‌سازی ▾</button>
+        <div class="sort-menu" id="sortMenu">
+            <a href="?{% if query %}q={{ query|urlencode }}{% endif %}">پیش‌فرض</a>
+            <a href="?sort=price_asc{% if query %}&q={{ query|urlencode }}{% endif %}">قیمت: کم به زیاد</a>
+            <a href="?sort=price_desc{% if query %}&q={{ query|urlencode }}{% endif %}">قیمت: زیاد به کم</a>
+        </div>
+    </div>
+</div>
+
+    <div class="room-cards-grid">
+        {% for room in rooms %}
+            <div class="room-card">
+                <div class="room-card-image">
+                    {% with image=room.images.first %}
+                        {% if image %}<img src="{{ image.image.url }}" alt="{{ room.name }}">{% endif %}
+                    {% endwith %}
+                    <span class="room-badge">{{ category.name_fa }}</span>
+                </div>
+                <div class="room-card-body">
+                    <div class="room-card-price-row">
+                        <span class="room-card-price">{{ room.price|floatformat:0 }} <span>تومان / شب</span></span>
+                        <span class="room-card-code">کد {{ room.code }}</span>
+                    </div>
+                    <h3 class="room-card-name">{{ room.name }}</h3>
+                    <div class="room-card-meta">
+                        {% if room.capacity_label %}<span><span class="icon">◍</span> {{ room.capacity_label }}</span>{% endif %}
+                        {% if room.size_sqm %}<span><span class="icon">▢</span> {{ room.size_sqm }} متر</span>{% endif %}
+                        {% if room.bed_type %}<span><span class="icon">▤</span> {{ room.bed_type }}</span>{% endif %}
+                    </div>
+                    <a href="{% url 'rooms:detail' room.id %}" class="room-card-link">مشاهده و رزرو</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>اتاقی برای این دسته‌بندی ثبت نشده است.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

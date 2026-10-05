@@ -1,0 +1,48 @@
+/* ==========================
+   فرم‌های گزارش PDF (ساده، مستقل)
+   ========================== */
+body.report-page {
+    background: var(--color-bg-dark);
+    color: var(--color-white-warm);
+    font-family: var(--font-body);
+    padding: 60px;
+}
+
+body.report-page h2 {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    margin-bottom: 25px;
+}
+
+body.report-page form p { margin-bottom: 16px; }
+
+body.report-page label {
+    display: block;
+    font-size: 13px;
+    color: var(--color-gold-light);
+    margin-bottom: 6px;
+}
+
+body.report-page input, body.report-page select {
+    padding: 10px 14px;
+    background: var(--color-bg-charcoal);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    min-width: 220px;
+}
+
+body.report-page button {
+    padding: 12px 30px;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+body.report-page button:hover { background: var(--color-gold-light); }

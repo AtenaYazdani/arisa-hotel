@@ -1,0 +1,7 @@
+{% if unread_message_count > 0 %}
+<div style="background:#333; border-right: 4px solid #f0ad4e; padding: 14px 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box;">
+    <a href="{{ messages_url }}" style="color:#f0ad4e; font-weight:bold; text-decoration:none; font-size: 15px;">
+        📩 پیام جدید داری ({{ unread_message_count }})
+    </a>
+</div>
+{% endif %}

@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}هتل آریسا{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/auth.css' %}">
+</head>
+<body class="auth-page">
+    <div class="auth-wrapper" style="background-image: linear-gradient(to bottom, rgba(13,13,15,0.25), rgba(13,13,15,0.65)), url('{% static 'images/auth/auth-bg.jpg' %}');">
+        <div class="auth-card">
+            {% if messages %}
+                <div class="auth-messages">
+                    {% for message in messages %}<p>{{ message }}</p>{% endfor %}
+                </div>
+            {% endif %}
+            {% block auth_content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

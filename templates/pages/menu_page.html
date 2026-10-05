@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ page_title }} | آریسا{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/page_hero.html' with eyebrow=eyebrow title=page_title description=description hero_image=hero_image cta_text="مشاهده سالن‌ها" cta_link="#halls" %}
+
+<section class="hall-grid-section" id="halls">
+    <h2 class="section-subtitle">سالن‌های {{ page_title }}</h2>
+    <div class="hall-grid">
+        {% for hall in halls %}
+            <div class="hall-card">
+                <img src="{{ hall.image.url }}" alt="{{ hall.name }}">
+                <span>{{ hall.name }}</span>
+            </div>
+        {% empty %}
+            <p>سالنی ثبت نشده است.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="promo-banner">
+    <div class="promo-banner-content">
+        <h2>{{ promo_title }}</h2>
+        <p>{{ promo_text }}</p>
+    </div>
+</section>
+
+<section class="menu-section">
+    <h2 class="section-subtitle">منو</h2>
+
+<div class="toolbar-row">
+    <form method="get" class="search-box">
+        <input type="text" name="q" value="{{ query }}" placeholder="جست‌وجو در منو...">
+        {% if current_sort %}<input type="hidden" name="sort" value="{{ current_sort }}">{% endif %}
+        <button type="submit">جست‌وجو</button>
+    </form>
+
+    <div class="sort-dropdown">
+        <button class="sort-toggle" onclick="document.getElementById('sortMenuItems').classList.toggle('open')">مرتب‌سازی ▾</button>
+        <div class="sort-menu" id="sortMenuItems">
+            <a href="?{% if query %}q={{ query|urlencode }}{% endif %}">پیش‌فرض</a>
+            <a href="?sort=price_asc{% if query %}&q={{ query|urlencode }}{% endif %}">قیمت: کم به زیاد</a>
+            <a href="?sort=price_desc{% if query %}&q={{ query|urlencode }}{% endif %}">قیمت: زیاد به کم</a>
+        </div>
+    </div>
+</div>
+    <div class="menu-list">
+        {% for item in menu_items %}
+            <div class="menu-item">
+    {% if item.image %}<img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-item-img">{% endif %}
+    <div class="menu-item-info">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+    </div>
+    <span class="menu-item-price">{{ item.price|floatformat:0 }} تومان</span>
+</div>
+        {% empty %}
+            <p>موردی در منو ثبت نشده است.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

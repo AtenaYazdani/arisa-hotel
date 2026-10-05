@@ -1,0 +1,13 @@
+{% extends 'auth_base.html' %}
+{% block title %}ثبت‌نام | آریسا{% endblock %}
+{% block auth_content %}
+<h2>ثبت‌نام در آریسا</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="auth-submit">ثبت‌نام</button>
+</form>
+<div class="auth-links">
+    <p><a href="{% url 'accounts:login' %}">قبلاً ثبت‌نام کرده‌اید؟ وارد شوید</a></p>
+</div>
+{% endblock %}

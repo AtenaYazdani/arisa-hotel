@@ -1,0 +1,43 @@
+{% load static %}
+<header class="site-header">
+    <div class="logo">
+        <a href="{% url 'core:index' %}">
+            <img src="{% static 'images/logo/arisa-logo.png' %}" alt="آریسا">
+        </a>
+    </div>
+
+    <nav class="main-nav">
+    <a href="{% url 'core:index' %}#about">درباره ما</a>
+    <a href="{% url 'core:index' %}#services">خدمات</a>
+    <a href="{% url 'rooms:list' %}">اتاق‌ها و سوئیت‌ها</a>
+    <a href="{% url 'core:index' %}#gallery">گالری</a>
+
+    <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-trigger">خدمات رفاهی <span class="caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+            <a href="{% url 'pages:restaurant' %}">رستوران</a>
+            <a href="{% url 'pages:cafe' %}">کافه</a>
+            <a href="{% url 'pages:pool' %}">استخر</a>
+            <a href="{% url 'pages:massage' %}">ماساژ</a>
+        </div>
+    </div>
+
+    <a href="{% url 'core:index' %}#footer-contact">تماس با ما</a>
+</nav>
+
+    <div class="header-actions">
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:profile' %}" class="profile-icon" title="{{ user.first_name }}">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8v1H4v-1z"/>
+                </svg>
+            </a>
+            <a href="{% url 'accounts:logout' %}">خروج</a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">ورود</a>
+            <a href="{% url 'accounts:register' %}">ثبت‌نام</a>
+        {% endif %}
+        
+    </div>
+</header>
